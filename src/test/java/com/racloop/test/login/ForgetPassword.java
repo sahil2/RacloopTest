@@ -2,12 +2,17 @@ package com.racloop.test.login;
 
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 public class ForgetPassword {
 	
@@ -26,18 +31,44 @@ public class ForgetPassword {
 
 	@Before
 	public void setUp() throws Exception {
-		driver.get("http://localhost:8082");
+		driver.get(baseUrl);
 	}
 
 	@After
 	public void tearDown() throws Exception {
 	}
 
+//	@Test
+//	public void emptyEmail() {
+//		driver.findElement(By.id("loginFormForgetPasswordLink")).click();
+//		driver.findElement(By.name("email")).sendKeys("");
+//		driver.findElement(By.id("forgotPasswordFormRetrievePasswordButton")).click();
+//	}
+//	
 	@Test
-	public void test() {
-		driver.findElement(By.cssSelector("html body#ext-element-3.x-desktop.x-linux.x-firefox.x-landscape div#ext-viewport.x-container.x-sized div#ext-element-4.x-body div#ext-element-2.x-inner.x-layout-card div#ext-mainNavigationView-1.x-container.x-navigationview.x-layout-card-item.x-sized div#ext-element-511.x-dock.x-dock-vertical.x-sized div#ext-element-512.x-dock-body div#ext-element-356.x-inner.x-navigationview-inner.x-layout-card form#ext-loginForm-1.x-container.x-form.x-paint-monitored.x-layout-card-item.x-sized div#ext-element-563.x-body.x-scroll-view div#ext-element-564.x-scroll-container.x-translatable-container.x-paint-monitored.x-size-monitored div#ext-element-535.x-inner.x-form-inner.x-scroll-scroller-vertical.x-translatable.x-size-monitored.x-paint-monitored.x-scroll-scroller div#ext-container-28.x-container.x-unsized div#ext-element-558.x-inner div#ext-element-559.x-innerhtml div.links a.small-text-medium.colored-text")).click();
-		driver.findElement(By.name("email")).sendKeys("sahil@ezzie.in");
-		driver.findElement(By.cssSelector("html body#ext-element-3.x-desktop.x-linux.x-firefox.x-landscape div#ext-viewport.x-container.x-sized div#ext-element-4.x-body div#ext-element-2.x-inner.x-layout-card div#ext-mainNavigationView-1.x-container.x-navigationview.x-layout-card-item.x-sized div#ext-element-511.x-dock.x-dock-vertical.x-sized div#ext-element-512.x-dock-body div#ext-element-356.x-inner.x-navigationview-inner.x-layout-card form#ext-forgotPasswordForm-1.x-container.x-form.x-paint-monitored.x-layout-card-item.x-sized div#ext-element-587.x-body.x-scroll-view div#ext-element-588.x-scroll-container.x-translatable-container.x-paint-monitored.x-size-monitored div#ext-element-569.x-inner.x-form-inner.x-scroll-scroller-vertical.x-translatable.x-size-monitored.x-paint-monitored.x-scroll-scroller div#ext-button-20.x-unsized.x-button.x-iconalign-left.x-button-action span#ext-element-583.x-button-label")).click();
+	public void wrongEmail() {
+		driver.findElement(By.id("loginFormForgetPasswordLink")).click();
+		WebElement element = driver.findElement(By.id("forgotPasswordFormEmail"));//.sendKeys("sahil@ezzie.in");
+		element.sendKeys("xxxxx");
+//		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(element);
+		System.out.println(element);
+		//driver.findElement(By.id("forgotPasswordFormRetrievePasswordButton")).click();
+		
 	}
+	
+//	@Test
+//	public void forgetPasswordsuccess() {
+//		driver.findElement(By.id("loginFormForgetPassword")).click();
+//		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
+//		driver.findElement(By.id("forgotPasswordFormRetrievePasswordButton")).click();
+//		WebElement element = driver.findElement(By.xpath("//*[.='Sign In']"));
+//		Assert.assertNotNull(element);
+//	}
 
 }

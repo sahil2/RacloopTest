@@ -2,12 +2,16 @@ package com.racloop.test.login;
 
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class VerifyMobile {
 	
@@ -26,7 +30,7 @@ public class VerifyMobile {
 
 	@Before
 	public void setUp() throws Exception {
-		driver.get("http://localhost:8082");
+		driver.get(baseUrl);
 	}
 
 	@After
@@ -34,9 +38,26 @@ public class VerifyMobile {
 	}
 
 	@Test
-	public void test() {
-		driver.findElement(By.cssSelector("html body#ext-element-3.x-desktop.x-linux.x-firefox.x-landscape div#ext-viewport.x-container.x-sized div#ext-element-4.x-body div#ext-element-2.x-inner.x-layout-card div#ext-mainNavigationView-1.x-container.x-navigationview.x-layout-card-item.x-sized div#ext-element-511.x-dock.x-dock-vertical.x-sized div#ext-element-512.x-dock-body div#ext-element-356.x-inner.x-navigationview-inner.x-layout-card form#ext-loginForm-1.x-container.x-form.x-paint-monitored.x-layout-card-item.x-sized div#ext-element-563.x-body.x-scroll-view div#ext-element-564.x-scroll-container.x-translatable-container.x-paint-monitored.x-size-monitored div#ext-element-535.x-inner.x-form-inner.x-scroll-scroller-vertical.x-translatable.x-size-monitored.x-paint-monitored.x-scroll-scroller div#ext-container-28.x-container.x-unsized div#ext-element-558.x-inner div#ext-element-559.x-innerhtml div.links a.small-text-medium.colored-text")).click();
+	public void emptyMobileAndVerificationCode() {
+		driver.findElement(By.id("loginFormVerifyMobileLink")).click();
+		driver.findElement(By.name("mobile")).sendKeys("");
+		driver.findElement(By.name("verificationCode")).sendKeys("");
+		driver.findElement(By.id("verifySmsFormVerifyMobileButton")).click();
 		
 	}
-
+	
+	@Test
+	public void wrongMobileAndVerificationCode() {
+		driver.findElement(By.id("loginFormVerifyMobileLink")).click();
+		driver.findElement(By.name("mobile")).sendKeys("4321");
+		driver.findElement(By.name("verificationCode")).sendKeys("1234");
+		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(element);
+		driver.findElement(By.id("verifySmsFormVerifyMobileButton")).click();
+}
 }

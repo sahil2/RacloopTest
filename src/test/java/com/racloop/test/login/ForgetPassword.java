@@ -32,43 +32,42 @@ public class ForgetPassword {
 	@Before
 	public void setUp() throws Exception {
 		driver.get(baseUrl);
+		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(element);
+				
 	}
 
 	@After
 	public void tearDown() throws Exception {
 	}
 
-//	@Test
-//	public void emptyEmail() {
-//		driver.findElement(By.id("loginFormForgetPasswordLink")).click();
-//		driver.findElement(By.name("email")).sendKeys("");
-//		driver.findElement(By.id("forgotPasswordFormRetrievePasswordButton")).click();
-//	}
-//	
+	@Test
+	public void emptyEmail() {
+		driver.findElement(By.id("loginFormForgetPasswordLink")).click();
+		driver.findElement(By.name("email")).sendKeys("");
+		driver.findElement(By.id("forgotPasswordFormRetrievePasswordButton")).click();
+	}
+	
 	@Test
 	public void wrongEmail() {
 		driver.findElement(By.id("loginFormForgetPasswordLink")).click();
-		WebElement element = driver.findElement(By.id("forgotPasswordFormEmail"));//.sendKeys("sahil@ezzie.in");
-		element.sendKeys("xxxxx");
-//		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		Assert.assertNotNull(element);
-		System.out.println(element);
-		//driver.findElement(By.id("forgotPasswordFormRetrievePasswordButton")).click();
+		driver.findElement(By.name("email")).sendKeys("abcd");
+		driver.findElement(By.id("forgotPasswordFormRetrievePasswordButton")).click();
 		
 	}
 	
-//	@Test
-//	public void forgetPasswordsuccess() {
-//		driver.findElement(By.id("loginFormForgetPassword")).click();
-//		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
-//		driver.findElement(By.id("forgotPasswordFormRetrievePasswordButton")).click();
-//		WebElement element = driver.findElement(By.xpath("//*[.='Sign In']"));
-//		Assert.assertNotNull(element);
-//	}
+	@Test
+	public void forgetPasswordsuccess() {
+		driver.findElement(By.id("loginFormForgetPasswordLink")).click();
+		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
+		driver.findElement(By.id("forgotPasswordFormRetrievePasswordButton")).click();
+		WebElement element = driver.findElement(By.xpath("//*[.='Sign In']"));
+		Assert.assertNotNull(element);
+	}
 
 }

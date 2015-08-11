@@ -13,12 +13,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class VerifyMobile {
+public class SearchScreen {
 	
 	public static WebDriver driver;
 	public static String baseUrl = "http://localhost:8082";
-	public static String verifycode = "http://localhost:8080/app/sampleData/verificationCode?mobile=7307392447&secret=s3cr3t";
-	//http://localhost:8080/app/sampleData/verificationCode?mobile=7307392447&secret=s3cr3t
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -27,7 +25,6 @@ public class VerifyMobile {
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
-		driver.get(verifycode);
 		driver.quit();
 	}
 
@@ -41,26 +38,28 @@ public class VerifyMobile {
 	}
 
 	@Test
-	public void emptyMobileAndVerificationCode() {
-		driver.findElement(By.id("loginFormVerifyMobileLink")).click();
-		driver.findElement(By.name("mobile")).sendKeys("");
-		driver.findElement(By.name("verificationCode")).sendKeys("");
-		driver.findElement(By.id("verifySmsFormVerifyMobileButton")).click();
-		
-	}
-	
-	@Test
-	public void wrongMobileAndVerificationCode() {
-		driver.findElement(By.id("loginFormVerifyMobileLink")).click();
-		driver.findElement(By.name("mobile")).sendKeys("4321");
-		driver.findElement(By.name("verificationCode")).sendKeys("1234");
+	public void emptyFields() {
+		driver.findElement(By.id("mainNavigationViewBack")).click();
 		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		Assert.assertNotNull(element);
-		driver.findElement(By.id("verifySmsFormVerifyMobileButton")).click();
-}
+		driver.findElement(By.id("searchFormFrom")).sendKeys("");
+		WebElement aelement = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(aelement);
+//		driver.findElement(By.name("to")).sendKeys("");
+//		driver.findElement(By.name("date")).sendKeys("");
+//		driver.findElement(By.name("time")).sendKeys("");
+//		driver.findElement(By.name("picker")).sendKeys("");
+		driver.findElement(By.id("searchFormSearchButton")).click();
+	}
+
 }

@@ -10,8 +10,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 //http://localhost:8080/app/sampleData/refresh?number=3&secret=s3cr3t
 //http://localhost:8080/app/sampleData/deleteAll?secret=s3cr3t
@@ -34,12 +34,18 @@ public class Login {
 	@Before
 	public void setUp() throws Exception {
 		driver.get(baseUrl);
-	}
+		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(element);
+		}
 
 	@After
 	public void tearDown() throws Exception {
-//		String logoutUrl = "http://localhost:8080/app/userMobile/logout";
-//		driver.get(logoutUrl);
+		
     }
 
 	@Test
@@ -58,7 +64,7 @@ public class Login {
 
 	@Test
 	public void emptyPassword() {
-		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
+		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("");
 		driver.findElement(By.id("loginFormLoginButton")).click();
 	}
@@ -72,19 +78,30 @@ public class Login {
 
 	@Test
 	public void wrongPassword() {
-		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
+		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("12345");
 		driver.findElement(By.id("loginFormLoginButton")).click();
 	}
 
 	@Test
 	public void Loginsuccess() {
-		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
+		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("qwert");
 		driver.findElement(By.id("loginFormLoginButton")).click();
-		WebElement element = driver.findElement(By.xpath("//*[.='Map']"));
-	    Assert.assertNotNull(element);
-		
+		driver.findElement(By.xpath("//*[.='Map']"));
+    	WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(element);
+	   	driver.findElement(By.className("mainTabsSettings")).click();
+    	driver.findElement(By.className("settingNavigationViewLogout")).click();
+    	driver.findElement(By.xpath("//*[.='Sign In']"));
+	   	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+		Assert.assertNotNull(signin);
+	   	
 	}
 
 }

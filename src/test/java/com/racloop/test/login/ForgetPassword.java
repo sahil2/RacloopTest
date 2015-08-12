@@ -64,7 +64,7 @@ public class ForgetPassword {
 	@Test
 	public void forgetPasswordsuccess() {
 		driver.findElement(By.id("loginFormForgetPasswordLink")).click();
-		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
+		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
 		driver.findElement(By.id("forgotPasswordFormRetrievePasswordButton")).click();
 		WebElement element = driver.findElement(By.xpath("//*[.='Sign In']"));
 		Assert.assertNotNull(element);

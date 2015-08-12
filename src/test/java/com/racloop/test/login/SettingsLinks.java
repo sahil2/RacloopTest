@@ -40,7 +40,7 @@ public class SettingsLinks {
 
 	@Test
 	public void Linkstest() {
-		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
+		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("qwert");
 		driver.findElement(By.id("loginFormLoginButton")).click();
     	driver.findElement(By.xpath("//*[.='Map']"));

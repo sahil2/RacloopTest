@@ -34,16 +34,13 @@ public class SwitchMainTabs {
 
 	@After
 	public void tearDown() throws Exception {
-		
-		
 	}
 
 	@Test
 	public void switchMainTabs() {
-		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
+		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("qwert");
 		driver.findElement(By.id("loginFormLoginButton")).click();
-		driver.findElement(By.xpath("//*[.='Map']"));
 		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));
 		try {
 			Thread.sleep(500);
@@ -56,7 +53,6 @@ public class SwitchMainTabs {
 		driver.findElement(By.className("mainTabsHistory")).click();
 		driver.findElement(By.className("mainTabsSettings")).click();
 		driver.findElement(By.className("settingNavigationViewLogout")).click();
-    	driver.findElement(By.xpath("//*[.='Sign In']"));
 	   	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
 		Assert.assertNotNull(signin);
 	}

@@ -64,7 +64,7 @@ public class Login {
 
 	@Test
 	public void emptyPassword() {
-		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
+		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("");
 		driver.findElement(By.id("loginFormLoginButton")).click();
 	}
@@ -78,14 +78,14 @@ public class Login {
 
 	@Test
 	public void wrongPassword() {
-		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
+		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("12345");
 		driver.findElement(By.id("loginFormLoginButton")).click();
 	}
 
 	@Test
 	public void Loginsuccess() {
-		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
+		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("qwert");
 		driver.findElement(By.id("loginFormLoginButton")).click();
 		driver.findElement(By.xpath("//*[.='Map']"));

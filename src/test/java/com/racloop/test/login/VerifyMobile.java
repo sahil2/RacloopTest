@@ -43,24 +43,38 @@ public class VerifyMobile {
 	@Test
 	public void emptyMobileAndVerificationCode() {
 		driver.findElement(By.id("loginFormVerifyMobileLink")).click();
+		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Verify Mobile']")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(element);
 		driver.findElement(By.name("mobile")).sendKeys("");
 		driver.findElement(By.name("verificationCode")).sendKeys("");
 		driver.findElement(By.id("verifySmsFormVerifyMobileButton")).click();
-		
+				
 	}
 	
 	@Test
 	public void wrongMobileAndVerificationCode() {
 		driver.findElement(By.id("loginFormVerifyMobileLink")).click();
+		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Verify Mobile']")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(element);
 		driver.findElement(By.name("mobile")).sendKeys("4321");
 		driver.findElement(By.name("verificationCode")).sendKeys("1234");
-		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
+		WebElement wrongcode = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Verify Mobile']")));
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		Assert.assertNotNull(element);
+		Assert.assertNotNull(wrongcode);
 		driver.findElement(By.id("verifySmsFormVerifyMobileButton")).click();
 }
 }

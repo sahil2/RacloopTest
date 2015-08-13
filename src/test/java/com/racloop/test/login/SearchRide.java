@@ -36,39 +36,8 @@ public class SearchRide {
 	public void tearDown() throws Exception {
 	}
 	
-//	@Test
-//	public void emptyfromandto() {
-//		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
-//		driver.findElement(By.name("password")).sendKeys("qwert");
-//		driver.findElement(By.id("loginFormLoginButton")).click();
-//		WebElement search = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
-//		try {
-//			Thread.sleep(500);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-//		Assert.assertNotNull(search);
-//		driver.findElement(By.name("from")).sendKeys("");
-//		driver.findElement(By.name("to")).sendKeys("");
-//		WebElement click = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
-//		try {
-//			Thread.sleep(2000);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-//		Assert.assertNotNull(click);
-//		driver.findElement(By.id("searchFormSearchButton")).click();
-//		WebElement a = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
-//		try {
-//			Thread.sleep(2000);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-//		Assert.assertNotNull(a);
-//	}
-
 	@Test
-	public void test() {
+	public void emptyfromandto() {
 		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("qwert");
 		driver.findElement(By.id("loginFormLoginButton")).click();
@@ -79,19 +48,50 @@ public class SearchRide {
 			e.printStackTrace();
 		}
 		Assert.assertNotNull(search);
-		driver.findElement(By.name("from")).sendKeys("Delhi, India");
-		driver.findElement(By.name("to")).sendKeys("Chandigarh, India");
-		WebElement calElement=driver.findElement(By.name("date"));
-		calElement.click();
-		selectJQueryDate("15");
-		WebElement asearch = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
+		driver.findElement(By.name("from")).sendKeys("");
+		driver.findElement(By.name("to")).sendKeys("");
+		WebElement click = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
 		try {
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		Assert.assertNotNull(asearch);
-		
+		Assert.assertNotNull(click);
+		driver.findElement(By.id("searchFormSearchButton")).click();
+		WebElement a = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(a);
+	}
+
+//	@Test
+//	public void test() {
+//		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
+//		driver.findElement(By.name("password")).sendKeys("qwert");
+//		driver.findElement(By.id("loginFormLoginButton")).click();
+//		WebElement search = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
+//		try {
+//			Thread.sleep(500);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//		Assert.assertNotNull(search);
+//		driver.findElement(By.name("from")).sendKeys("Delhi, India");
+//		driver.findElement(By.name("to")).sendKeys("Chandigarh, India");
+//		WebElement calElement=driver.findElement(By.name("date"));
+//		calElement.click();
+//		
+//		WebElement asearch = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
+//		try {
+//			Thread.sleep(5000);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//		Assert.assertNotNull(asearch);
+//		
 	}
 		
 		
@@ -110,8 +110,5 @@ public class SearchRide {
 
 
 
-private void selectJQueryDate(String string) {
-	// TODO Auto-generated method stub
-	
-}
-}
+
+

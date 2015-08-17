@@ -40,6 +40,14 @@ public class SettingsLinks {
 
 	@Test
 	public void Linkstest() {
+		driver.findElement(By.id("searchFormSignInLink")).click();
+	    WebElement link = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+	    try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	    Assert.assertNotNull(link);
 		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("qwert");
 		driver.findElement(By.id("loginFormLoginButton")).click();
@@ -52,6 +60,13 @@ public class SettingsLinks {
 		}
 		Assert.assertNotNull(element);
     	driver.findElement(By.className("mainTabsSettings")).click();
+    	WebElement main = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(main);
     	driver.findElement(By.className("settingNavigationViewEditProfile")).click();
     	driver.findElement(By.id("settingNavigationViewBack")).click();
     	WebElement profile = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Settings']")));

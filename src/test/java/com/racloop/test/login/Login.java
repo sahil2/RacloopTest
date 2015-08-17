@@ -35,14 +35,14 @@ public class Login {
 	public void setUp() throws Exception {
 		driver.get(baseUrl);
 		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
-		try {
+	    try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		Assert.assertNotNull(element);
-		}
-
+	    Assert.assertNotNull(element);
+					
+	}
 	@After
 	public void tearDown() throws Exception {
 		
@@ -50,6 +50,14 @@ public class Login {
 
 	@Test
 	public void emptyUserAndPassword() {
+		driver.findElement(By.id("searchFormSignInLink")).click();
+		WebElement emptyuserandpass = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(emptyuserandpass);
 		driver.findElement(By.name("email")).sendKeys("");
 		driver.findElement(By.name("password")).sendKeys("");
 		driver.findElement(By.id("loginFormLoginButton")).click();
@@ -57,6 +65,14 @@ public class Login {
 
 	@Test
 	public void emptyUserOnly() {
+	    driver.findElement(By.id("searchFormSignInLink")).click();
+	    WebElement emptyuser = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+	    try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(emptyuser);
 		driver.findElement(By.name("email")).sendKeys("");
 		driver.findElement(By.name("password")).sendKeys("qwert");
 		driver.findElement(By.id("loginFormLoginButton")).click();
@@ -64,6 +80,14 @@ public class Login {
 
 	@Test
 	public void emptyPassword() {
+	    driver.findElement(By.id("searchFormSignInLink")).click();
+	    WebElement emptypass = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+	    try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	    Assert.assertNotNull(emptypass);
 		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("");
 		driver.findElement(By.id("loginFormLoginButton")).click();
@@ -71,6 +95,14 @@ public class Login {
 
 	@Test
 	public void wrongUser() {
+	    driver.findElement(By.id("searchFormSignInLink")).click();
+	    WebElement wronguser = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+	    try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	    Assert.assertNotNull(wronguser);
 		driver.findElement(By.name("email")).sendKeys("sahil@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("");
 		driver.findElement(By.id("loginFormLoginButton")).click();
@@ -78,6 +110,14 @@ public class Login {
 
 	@Test
 	public void wrongPassword() {
+	    driver.findElement(By.id("searchFormSignInLink")).click();
+	    WebElement wrongpass = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+	    try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	    Assert.assertNotNull(wrongpass);
 		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("12345");
 		driver.findElement(By.id("loginFormLoginButton")).click();
@@ -85,19 +125,35 @@ public class Login {
 
 	@Test
 	public void Loginsuccess() {
+	    driver.findElement(By.id("searchFormSignInLink")).click();
+	    WebElement loginsuccess = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+	    try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	    Assert.assertNotNull(loginsuccess);
 		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("qwert");
 		driver.findElement(By.id("loginFormLoginButton")).click();
-		driver.findElement(By.xpath("//*[.='Map']"));
-    	WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));
+		WebElement login = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		Assert.assertNotNull(element);
-	   	driver.findElement(By.className("mainTabsSettings")).click();
+		Assert.assertNotNull(login);
+		driver.findElement(By.className("mainTabsSettings")).click();
+		WebElement main = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Settings']")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(main);
     	driver.findElement(By.className("settingNavigationViewLogout")).click();
+    	WebElement logout = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Settings']")));
+		Assert.assertNotNull(logout);
     	driver.findElement(By.xpath("//*[.='Sign In']"));
 	   	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
 		Assert.assertNotNull(signin);

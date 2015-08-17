@@ -37,7 +37,15 @@ public class History {
 	}
 
 	@Test
-	public void test() {
+	public void historyTab() {
+		driver.findElement(By.id("searchFormSignInLink")).click();
+	    WebElement history = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+	    try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	    Assert.assertNotNull(history);
 		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("qwert");
 		driver.findElement(By.id("loginFormLoginButton")).click();
@@ -49,13 +57,13 @@ public class History {
 		}
 		Assert.assertNotNull(home);
 		driver.findElement(By.className("mainTabsHistory")).click();
-		WebElement history = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='History']")));
+		WebElement maintab = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='History']")));
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		Assert.assertNotNull(history);
+		Assert.assertNotNull(maintab);
 		driver.findElement(By.className("searchAgainHistoryButton")).click();
 		WebElement searchrides = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
 		try {

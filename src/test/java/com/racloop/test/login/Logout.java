@@ -13,13 +13,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class SwitchMainTabs {
+public class Logout {
 	public static WebDriver driver;
 	public static String baseUrl = "http://localhost:8082";
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		driver = new FirefoxDriver(); 
+		driver = new FirefoxDriver();
 	}
 
 	@AfterClass
@@ -37,32 +37,40 @@ public class SwitchMainTabs {
 	}
 
 	@Test
-	public void switchMainTabs() {
-		driver.findElement(By.id("searchFormSignInLink")).click();
-	    WebElement maintabs = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+	public void Loginsuccess() {
+	    driver.findElement(By.id("searchFormSignInLink")).click();
+	    WebElement loginsuccess = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
 	    try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-	    Assert.assertNotNull(maintabs);
+	    Assert.assertNotNull(loginsuccess);
 		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("qwert");
 		driver.findElement(By.id("loginFormLoginButton")).click();
-		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));
+		WebElement login = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		Assert.assertNotNull(element);
-		driver.findElement(By.className("mainTabssearchNavigationView")).click();
-		driver.findElement(By.className("mainTabsjourneyNavigationView")).click();
-		driver.findElement(By.className("mainTabsHistory")).click();
+		Assert.assertNotNull(login);
 		driver.findElement(By.className("mainTabsSettings")).click();
-		driver.findElement(By.className("settingNavigationViewLogout")).click();
+		WebElement main = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Settings']")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(main);
+    	driver.findElement(By.className("settingNavigationViewLogout")).click();
+    	WebElement logout = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Settings']")));
+		Assert.assertNotNull(logout);
+    	driver.findElement(By.xpath("//*[.='Sign In']"));
 	   	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
 		Assert.assertNotNull(signin);
+	   	
 	}
 
 }

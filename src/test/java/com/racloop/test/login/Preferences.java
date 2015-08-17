@@ -1,7 +1,5 @@
 package com.racloop.test.login;
 
-import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -39,7 +37,15 @@ public class Preferences {
 	}
 
 	@Test
-	public void test() {
+	public void emergencyContact() {
+		driver.findElement(By.id("searchFormSignInLink")).click();
+	    WebElement preferences = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+	    try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	    Assert.assertNotNull(preferences);
 		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("qwert");
 		driver.findElement(By.id("loginFormLoginButton")).click();
@@ -67,7 +73,9 @@ public class Preferences {
 			e.printStackTrace();
 		}
 		Assert.assertNotNull(insert);
+		driver.findElement(By.name("contactOne")).clear();
 		driver.findElement(By.name("contactOne")).sendKeys("9521235648");
+		driver.findElement(By.name("contactTwo")).clear();
 		driver.findElement(By.name("contactTwo")).sendKeys("9521235658");
 		WebElement check = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Preferences']")));
 		try {

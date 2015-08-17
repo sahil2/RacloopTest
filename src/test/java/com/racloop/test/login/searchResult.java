@@ -37,7 +37,15 @@ public class searchResult {
 	}
 
 	@Test
-	public void test() {
+	public void searchresult() {
+		driver.findElement(By.id("searchFormSignInLink")).click();
+	    WebElement searchresult = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+	    try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	    Assert.assertNotNull(searchresult);
 		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("qwert");
 		driver.findElement(By.id("loginFormLoginButton")).click();
@@ -59,6 +67,13 @@ public class searchResult {
 		driver.findElement(By.className("searchAgainButton")).click();
 		driver.findElement(By.className("detailsButton")).click();
 		driver.findElement(By.id("searchNavigationViewBack")).click();
+		WebElement browse = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='My Rides']")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(browse);
 		WebElement search = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
 		Assert.assertNotNull(search);
 	}

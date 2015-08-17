@@ -38,38 +38,42 @@ public class SearchRide {
 	
 	@Test
 	public void emptyfromandto() {
-		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
-		driver.findElement(By.name("password")).sendKeys("qwert");
-		driver.findElement(By.id("loginFormLoginButton")).click();
-		WebElement search = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
+		driver.findElement(By.id("searchFormSignInLink")).click();
+		WebElement login = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		Assert.assertNotNull(search);
-		driver.findElement(By.name("from")).sendKeys("");
-		driver.findElement(By.name("to")).sendKeys("");
-		WebElement click = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
+		Assert.assertNotNull(login);
+		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
+		driver.findElement(By.name("password")).sendKeys("qwert");
+		driver.findElement(By.id("loginFormLoginButton")).click();
+		WebElement main = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(main);
+		driver.findElement(By.className("mainTabssearchNavigationView")).click();
+		driver.findElement(By.id("searchFormFrom")).click();
+		driver.findElement(By.id("searchFormFrom")).sendKeys("");
+		driver.findElement(By.id("searchFormTabTo")).click();
+		driver.findElement(By.id("searchFormTabTo")).sendKeys("");
+		driver.findElement(By.className("searchCls")).click();
+		WebElement ride = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
 		try {
 			Thread.sleep(2000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
-		Assert.assertNotNull(click);
-		driver.findElement(By.id("searchFormSearchButton")).click();
-		WebElement a = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
-		try {
-			Thread.sleep(2000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		Assert.assertNotNull(a);
+		Assert.assertNotNull(ride);
 	}
 
 //	@Test
 //	public void test() {
-//		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
+//		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
 //		driver.findElement(By.name("password")).sendKeys("qwert");
 //		driver.findElement(By.id("loginFormLoginButton")).click();
 //		WebElement search = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
@@ -84,13 +88,13 @@ public class SearchRide {
 //		WebElement calElement=driver.findElement(By.name("date"));
 //		calElement.click();
 //		
-//		WebElement asearch = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
+//		WebElement ridesearch = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
 //		try {
 //			Thread.sleep(5000);
 //		} catch (InterruptedException e) {
 //			e.printStackTrace();
 //		}
-//		Assert.assertNotNull(asearch);
+//		Assert.assertNotNull(ridesearch);
 //		
 	}
 		

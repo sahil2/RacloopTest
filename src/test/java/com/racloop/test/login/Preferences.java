@@ -37,7 +37,7 @@ public class Preferences {
 	}
 
 	@Test
-	public void emergencyContact() {
+	public void preferencesContact() {
 		driver.findElement(By.id("searchFormSignInLink")).click();
 	    WebElement preferences = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
 	    try {

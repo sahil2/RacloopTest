@@ -152,11 +152,9 @@ public class Register {
 		driver.findElement(By.name("name")).sendKeys("sahil");
 		driver.findElement(By.name("mobile")).sendKeys("8427836228");
 		driver.findElement(By.id("registerFormRegisterButton")).click();
-//		driver.findElement(By.name("verificationCode")).sendKeys("214404");
-//		driver.findElement(By.id("verifySmsFormVerifyMobileButton")).click();
-//		WebElement element = driver.findElement(By.xpath("//*[.='Verify Mobile']"));
-//	    Assert.assertNotNull(element);
-		
+		WebElement verify = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Verify Mobile']")));
+		Assert.assertNotNull(verify);
+
 	}
 
 }

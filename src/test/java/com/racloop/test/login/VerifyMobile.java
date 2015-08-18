@@ -112,5 +112,30 @@ public class VerifyMobile {
 	    Assert.assertNotNull(sms);
 				
 	}
-		
+	
+	@Test
+	public void verifyMobile() {
+		driver.findElement(By.id("searchFormSignInLink")).click();
+		WebElement empty = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+	    try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	    Assert.assertNotNull(empty);
+	    driver.findElement(By.id("loginFormVerifyMobileLink")).click();
+	    WebElement link = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+	    try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	    Assert.assertNotNull(link);
+		driver.findElement(By.name("mobile")).sendKeys("8427836228");
+		driver.findElement(By.name("verificationCode")).sendKeys("274106");
+		driver.findElement(By.className("emailCls")).click();
+		WebElement sms = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+	    Assert.assertNotNull(sms);
+				
+	}
 }

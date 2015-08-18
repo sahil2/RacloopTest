@@ -124,7 +124,7 @@ public class Login {
 	}
 
 	@Test
-	public void Loginsuccess() {
+	public void loginSuccess() {
 	    driver.findElement(By.id("searchFormSignInLink")).click();
 	    WebElement loginsuccess = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
 	    try {
@@ -154,8 +154,7 @@ public class Login {
     	driver.findElement(By.className("settingNavigationViewLogout")).click();
     	WebElement logout = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Settings']")));
 		Assert.assertNotNull(logout);
-    	driver.findElement(By.xpath("//*[.='Sign In']"));
-	   	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+    	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
 		Assert.assertNotNull(signin);
 	   	
 	}

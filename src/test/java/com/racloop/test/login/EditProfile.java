@@ -72,25 +72,28 @@ public class EditProfile {
 		}
 		Assert.assertNotNull(click);
 		driver.findElement(By.className("settingNavigationViewEditProfile")).click();
-		WebElement page = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));
+		WebElement page = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Profile']")));
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		Assert.assertNotNull(page);
-		driver.findElement(By.id("editProfileFormButton")).click();
 		driver.findElement(By.name("fullName")).clear();
 		driver.findElement(By.name("fullName")).sendKeys("Parminder");
 		driver.findElement(By.id("editProfileFormButton")).click();
-		driver.findElement(By.className("mainTabsSettings")).click();
-		WebElement aelement = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		Assert.assertNotNull(aelement);
+		WebElement edit = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Settings']")));
+		Assert.assertNotNull(edit);
+		
+		
+//		driver.findElement(By.className("mainTabsSettings")).click();
+//		WebElement aelement = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
+//		try {
+//			Thread.sleep(500);
+//		} catch (InterruptedException e) {
+//			e.printStackTrace();
+//		}
+//		Assert.assertNotNull(aelement);
 		driver.findElement(By.className("settingNavigationViewLogout")).click();
 		WebElement logout = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Profile']")));
 		try {
@@ -105,47 +108,47 @@ public class EditProfile {
 		
 	}
 		
-		@Test
-		public void editMobile() {
-			driver.findElement(By.id("searchFormSignInLink")).click();
-			WebElement editmobile = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			Assert.assertNotNull(editmobile);
-			driver.findElement(By.name("email")).sendKeys("user@racloop.com");
-			driver.findElement(By.name("password")).clear();
-			driver.findElement(By.name("password")).sendKeys("qwert");
-			driver.findElement(By.id("loginFormLoginButton")).click();
-			WebElement home = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			Assert.assertNotNull(home);
-			driver.findElement(By.className("mainTabsSettings")).click();
-			WebElement aelement = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			Assert.assertNotNull(aelement);
-			driver.findElement(By.className("settingNavigationViewLogout")).click();
-			WebElement logout = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Profile']")));
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			Assert.assertNotNull(logout);
-	    	driver.findElement(By.xpath("//*[.='Sign In']"));
-		   	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
-			Assert.assertNotNull(signin);
-		
-	}
+//		@Test
+//		public void editMobile() {
+//			driver.findElement(By.id("searchFormSignInLink")).click();
+//			WebElement editmobile = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+//			try {
+//				Thread.sleep(500);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//			Assert.assertNotNull(editmobile);
+//			driver.findElement(By.name("email")).sendKeys("user@racloop.com");
+//			driver.findElement(By.name("password")).clear();
+//			driver.findElement(By.name("password")).sendKeys("qwert");
+//			driver.findElement(By.id("loginFormLoginButton")).click();
+//			WebElement home = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));
+//			try {
+//				Thread.sleep(500);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//			Assert.assertNotNull(home);
+//			driver.findElement(By.className("mainTabsSettings")).click();
+//			WebElement aelement = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
+//			try {
+//				Thread.sleep(500);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//			Assert.assertNotNull(aelement);
+//			driver.findElement(By.className("settingNavigationViewLogout")).click();
+//			WebElement logout = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Profile']")));
+//			try {
+//				Thread.sleep(500);
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//			Assert.assertNotNull(logout);
+//	    	driver.findElement(By.xpath("//*[.='Sign In']"));
+//		   	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+//			Assert.assertNotNull(signin);
+//		
+//	}
 
 }

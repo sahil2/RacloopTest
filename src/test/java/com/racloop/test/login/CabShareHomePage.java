@@ -47,21 +47,20 @@ public class CabShareHomePage {
 		WebElement click = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='CabShare']")));
 		Assert.assertNotNull(click);
 }
-//	@Test
-//	public void rideSearch() {
-//		driver.findElement(By.id("searchFormMainFrom")).click();
-//		driver.findElement(By.id("searchFormMainFrom")).sendKeys("Delhi, India");
-//		driver.findElement(By.id("searchFormMainTo")).click();
-//		driver.findElement(By.id("searchFormMainTo")).sendKeys("Chandigarh, India");
-//		driver.findElement(By.id("date")).click();
-//		driver.findElement(By.className("x-dataview-item")).getText();
-//		WebElement ridesearch = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
-//		try {
-//			Thread.sleep(5000);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-//		Assert.assertNotNull(ridesearch);
+	@Test
+	public void rideSearch() {
+		driver.findElement(By.id("searchFormMainFrom")).click();
+		driver.findElement(By.id("searchFormMainFrom")).sendKeys("Delhi, India");
+		driver.findElement(By.id("searchFormMainTo")).click();
+		driver.findElement(By.id("searchFormMainTo")).sendKeys("Chandigarh, India");
+		driver.findElement(By.name("date")).click();
+		WebElement ridesearch = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(ridesearch);
 //		driver.findElement(By.name("date")).click();
 //		driver.findElement(By.name("time")).click();;
 //		driver.findElement(By.name("picker")).click();;
@@ -74,4 +73,5 @@ public class CabShareHomePage {
 //		}
 //		Assert.assertNotNull(element);
 //}
+}
 }

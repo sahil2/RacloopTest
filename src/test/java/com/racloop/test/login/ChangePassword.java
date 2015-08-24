@@ -132,7 +132,7 @@ public class ChangePassword {
 			e.printStackTrace();
 		}
 		Assert.assertNotNull(changepass);
-		driver.findElement(By.name("currentPassword")).sendKeys("P@ssw0rd");
+		driver.findElement(By.name("currentPassword")).sendKeys("qwert");
 		driver.findElement(By.name("newPassword")).sendKeys("P@ssw0rd");
 		driver.findElement(By.id("changePasswordFormButton")).click();
 		driver.findElement(By.className("mainTabsSettings")).click();

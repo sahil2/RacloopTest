@@ -36,63 +36,63 @@ public class BeforeLoginLinks {
 	public void tearDown() throws Exception {
 	}
 
-//	@Test
-//	public void loginlink() {
-//		driver.findElement(By.id("searchFormSignInLink")).click();
-//		WebElement login = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
-//		Assert.assertNotNull(login);
-//		driver.findElement(By.id("mainNavigationViewBack")).click();
-//		WebElement home = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='CabShare']")));
-//		Assert.assertNotNull(home);
-//	}
-//	@Test
-//	public void forgetPasswordlink() {
-//		driver.findElement(By.id("searchFormSignInLink")).click();
-//		WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
-//		try {
-//			Thread.sleep(500);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-//		Assert.assertNotNull(signin);
-//		driver.findElement(By.id("loginFormForgetPasswordLink")).click();
-//		WebElement forgetpass = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Forgot Password']")));
-//		Assert.assertNotNull(forgetpass);
-//		driver.findElement(By.id("mainNavigationViewBack")).click();
-//		WebElement home = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
-//		Assert.assertNotNull(home);
-//
-//}
-//	
-//	@Test
-//	public void verifyMobilelink() {
-//		driver.findElement(By.id("searchFormSignInLink")).click();
-//		WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
-//		try {
-//			Thread.sleep(500);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-//		Assert.assertNotNull(signin);
-//		driver.findElement(By.id("loginFormVerifyMobileLink")).click();
-//		WebElement forgetpass = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Verify Mobile']")));
-//		Assert.assertNotNull(forgetpass);
-//		driver.findElement(By.id("mainNavigationViewBack")).click();
-//		WebElement home = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
-//		Assert.assertNotNull(home);
-//
-//}
-//	
-//	@Test
-//	public void registerlink() {
-//		driver.findElement(By.id("searchFormRegisterLink")).click();
-//		WebElement login = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Register']")));
-//		Assert.assertNotNull(login);
-//		driver.findElement(By.id("mainNavigationViewBack")).click();
-//		WebElement home = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='CabShare']")));
-//		Assert.assertNotNull(home);
-//
-//}
+	@Test
+	public void loginlink() {
+		driver.findElement(By.id("searchFormSignInLink")).click();
+		WebElement login = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+		Assert.assertNotNull(login);
+		driver.findElement(By.id("mainNavigationViewBack")).click();
+		WebElement home = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='CabShare']")));
+		Assert.assertNotNull(home);
+	}
+	@Test
+	public void forgetPasswordlink() {
+		driver.findElement(By.id("searchFormSignInLink")).click();
+		WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(signin);
+		driver.findElement(By.id("loginFormForgetPasswordLink")).click();
+		WebElement forgetpass = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Forgot Password']")));
+		Assert.assertNotNull(forgetpass);
+		driver.findElement(By.id("mainNavigationViewBack")).click();
+		WebElement home = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+		Assert.assertNotNull(home);
+
+}
+	
+	@Test
+	public void verifyMobilelink() {
+		driver.findElement(By.id("searchFormSignInLink")).click();
+		WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(signin);
+		driver.findElement(By.id("loginFormVerifyMobileLink")).click();
+		WebElement forgetpass = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Verify Mobile']")));
+		Assert.assertNotNull(forgetpass);
+		driver.findElement(By.id("mainNavigationViewBack")).click();
+		WebElement home = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+		Assert.assertNotNull(home);
+
+}
+	
+	@Test
+	public void registerlink() {
+		driver.findElement(By.id("searchFormRegisterLink")).click();
+		WebElement login = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Register']")));
+		Assert.assertNotNull(login);
+		driver.findElement(By.id("mainNavigationViewBack")).click();
+		WebElement home = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='CabShare']")));
+		Assert.assertNotNull(home);
+
+}
 	
 	@Test
 	public void termslink() {

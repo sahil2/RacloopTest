@@ -56,26 +56,26 @@ public class EmergencyContact {
 		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("qwert");
 		driver.findElement(By.id("loginFormLoginButton")).click();
-//		WebElement login = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));
-//		try {
-//			Thread.sleep(500);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-//		Assert.assertNotNull(login);
-//		driver.findElement(By.className("mainTabsSettings")).click();
-//		WebElement main = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Settings']")));
-//		try {
-//			Thread.sleep(500);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
-//		Assert.assertNotNull(main);
-//    	driver.findElement(By.className("settingNavigationViewLogout")).click();
-//    	WebElement logout = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Settings']")));
-//		Assert.assertNotNull(logout);
-//    	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Emergency Contacts']")));
-//		Assert.assertNotNull(signin);
+		WebElement login = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(login);
+		driver.findElement(By.className("mainTabsSettings")).click();
+		WebElement main = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Settings']")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(main);
+    	driver.findElement(By.className("settingNavigationViewLogout")).click();
+    	WebElement logout = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Settings']")));
+		Assert.assertNotNull(logout);
+    	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Emergency Contacts']")));
+		Assert.assertNotNull(signin);
 		driver.findElement(By.name("contactOne")).clear();
 		driver.findElement(By.name("contactOne")).sendKeys("9521235648");
 		driver.findElement(By.name("contactTwo")).clear();
@@ -87,7 +87,7 @@ public class EmergencyContact {
 			e.printStackTrace();
 		}
 		Assert.assertNotNull(check);
-		driver.findElement(By.id("saveEmergencyButton")).click();
+		driver.findElement(By.id("emergencyContactSaveButton")).click();
 		WebElement save = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Emergency Contacts']")));
 		Assert.assertNotNull(save);
 	   	

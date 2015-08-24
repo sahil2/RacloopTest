@@ -72,7 +72,14 @@ public class DisableRecurringSearch {
 		}
 		Assert.assertNotNull(click);
 		driver.findElement(By.className("settingNavigationViewRecurringView")).click();
-		driver.findElement(By.id("recurringViewClick")).click();
+		WebElement check = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(check);
+		driver.findElement(By.name("disableDialog")).click();
 		WebElement tick = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));
 		try {
 			Thread.sleep(500);

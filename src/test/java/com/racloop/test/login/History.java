@@ -46,7 +46,7 @@ public class History {
 			e.printStackTrace();
 		}
 	    Assert.assertNotNull(history);
-		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
+		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("qwert");
 		driver.findElement(By.id("loginFormLoginButton")).click();
 		WebElement home = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));

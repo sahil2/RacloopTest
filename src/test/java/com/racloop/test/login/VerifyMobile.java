@@ -132,7 +132,7 @@ public class VerifyMobile {
 		}
 	    Assert.assertNotNull(link);
 		driver.findElement(By.name("mobile")).sendKeys("8427836228");
-		driver.findElement(By.name("verificationCode")).sendKeys("274106");
+		driver.findElement(By.name("verificationCode")).sendKeys("393779");
 		driver.findElement(By.className("emailCls")).click();
 		WebElement sms = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
 	    Assert.assertNotNull(sms);

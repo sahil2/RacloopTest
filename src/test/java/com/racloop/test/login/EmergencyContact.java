@@ -53,8 +53,8 @@ public class EmergencyContact {
 			e.printStackTrace();
 		}
 	    Assert.assertNotNull(loginsuccess);
-		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
-		driver.findElement(By.name("password")).sendKeys("qwert");
+		driver.findElement(By.name("email")).sendKeys("sahil@ezzie.in");
+		driver.findElement(By.name("password")).sendKeys("password");
 		driver.findElement(By.id("loginFormLoginButton")).click();
 		WebElement login = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));
 		try {

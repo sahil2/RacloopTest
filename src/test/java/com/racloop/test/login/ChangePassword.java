@@ -34,16 +34,22 @@ public class ChangePassword {
 		WebElement element = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='CabShare']")));
 		helper.pause(500);
 		Assert.assertNotNull(element);
-		login();
+		
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		logout();
+		
 	}
 	
 	@Test
 	public void emptyChangePassword() {		
+		driver.findElement(By.id("searchFormSignInLink")).click();
+		helper.pause(500);
+		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
+		driver.findElement(By.name("password")).sendKeys("qwert");
+		driver.findElement(By.id("loginFormLoginButton")).click();	
+		helper.pause(1000);
 		driver.findElement(By.className("mainTabsSettings")).click();
 		driver.findElement(By.xpath("//span[contains(text(), 'Change Password')]")).click();	
 		WebElement changepass = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
@@ -51,61 +57,46 @@ public class ChangePassword {
 		Assert.assertNotNull(changepass);
 		driver.findElement(By.name("currentPassword")).sendKeys("");
 		driver.findElement(By.name("newPassword")).sendKeys("");
-		WebElement changePassword = driver.findElement(By.xpath("//span[contains(lower-case(text()), 'Change Password']"));
-		changePassword.click();
+		driver.findElement(By.className("changePasswordClickButton")).click();
+		WebElement popUpBox = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Invalid Data']")));
+		Assert.assertNotNull(popUpBox);
 		driver.findElement(By.className("mainTabsSettings")).click();
-		
-		WebElement aelement = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
-		helper.pause(500);
+		WebElement aelement = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));
+		helper.pause(1000);
 		Assert.assertNotNull(aelement);
-		driver.findElement(By.className("settingNavigationViewLogout")).click();
-		WebElement logout = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Profile']")));
-		helper.pause(500);
+		driver.findElement(By.xpath("//span[contains(text(), 'Logout')]")).click();
+    	WebElement logout = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Settings']")));
 		Assert.assertNotNull(logout);
-    	driver.findElement(By.xpath("//*[.='Sign In']"));
-	   	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+    	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
 		Assert.assertNotNull(signin);
 	}
 
-	//@Test
+	@Test
 	public void changePassword() {
-		driver.findElement(By.className("mainTabsSettings")).click();
-		driver.findElement(By.className("settingNavigationViewChangePasswordForm")).click();
-		WebElement changepass = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
-		helper.pause(500);
-		Assert.assertNotNull(changepass);
-		driver.findElement(By.name("currentPassword")).sendKeys("qwert");
-		driver.findElement(By.name("newPassword")).sendKeys("P@ssw0rd");
-		driver.findElement(By.id("changePasswordFormButton")).click();
-		driver.findElement(By.className("mainTabsSettings")).click();
-		WebElement aelement = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
-		helper.pause(500);
-		Assert.assertNotNull(aelement);
-		driver.findElement(By.className("settingNavigationViewLogout")).click();
-		WebElement logout = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Profile']")));
-		helper.pause(500);
-		Assert.assertNotNull(logout);
-    	driver.findElement(By.xpath("//*[.='Sign In']"));
-	   	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
-		Assert.assertNotNull(signin);
-		
-	}
-	public void login(){
 		driver.findElement(By.id("searchFormSignInLink")).click();
 		helper.pause(500);
 		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("qwert");
 		driver.findElement(By.id("loginFormLoginButton")).click();	
 		helper.pause(500);
-	}
-	public void logout(){
 		driver.findElement(By.className("mainTabsSettings")).click();
-		WebElement main = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Settings']")));
+		driver.findElement(By.xpath("//span[contains(text(), 'Change Password')]")).click();
+		WebElement changepass = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
 		helper.pause(500);
-		Assert.assertNotNull(main);
-    	driver.findElement(By.className("settingNavigationViewLogout")).click();
+		Assert.assertNotNull(changepass);
+		driver.findElement(By.name("currentPassword")).sendKeys("qwert");
+		driver.findElement(By.name("newPassword")).sendKeys("P@ssw0rd");
+		driver.findElement(By.className("changePasswordClickButton")).click();
+		driver.findElement(By.className("mainTabsSettings")).click();
+		WebElement aelement = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));
+		helper.pause(500);
+		Assert.assertNotNull(aelement);
+		driver.findElement(By.xpath("//span[contains(text(), 'Logout')]")).click();
     	WebElement logout = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Settings']")));
 		Assert.assertNotNull(logout);
-	}
+    	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+		Assert.assertNotNull(signin);
+		
+	}	
 
 }

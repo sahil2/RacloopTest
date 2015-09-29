@@ -151,7 +151,7 @@ public class Login {
 			e.printStackTrace();
 		}
 		Assert.assertNotNull(main);
-    	driver.findElement(By.className("settingNavigationViewLogout")).click();
+		driver.findElement(By.xpath("//span[contains(text(), 'Logout')]")).click();
     	WebElement logout = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Settings']")));
 		Assert.assertNotNull(logout);
     	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));

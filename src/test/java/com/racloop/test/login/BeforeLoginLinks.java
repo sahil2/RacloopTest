@@ -31,7 +31,7 @@ public class BeforeLoginLinks {
 	@Before
 	public void setUp() throws Exception {
 		driver.get(baseUrl);
-		helper.pause(1500);
+		helper.pause(1000);
 	}
 
 	@After
@@ -107,19 +107,19 @@ public class BeforeLoginLinks {
 		Assert.assertNotNull(home);
 
 }
-//	@Test
-//	public void privacylink() {
-//		driver.findElement(By.id("searchFormRegisterLink")).click();
-//		WebElement login = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Register']")));
-//		helper.pause(500);
-//		Assert.assertNotNull(login);
-//		driver.findElement(By.id("registerFormPrivacyLink")).click();
-//		WebElement link = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Data Privacy']")));
-//		helper.pause(500);
-//		Assert.assertNotNull(link);
-//		driver.findElement(By.id("mainNavigationViewBack")).click();
-//		WebElement home = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Register']")));
-//		Assert.assertNotNull(home);
-//
-//}	
+	@Test
+	public void privacylink() {
+		driver.findElement(By.id("searchFormRegisterLink")).click();
+		WebElement login = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Register']")));
+		helper.pause(500);
+		Assert.assertNotNull(login);
+		driver.findElement(By.id("registerFormPrivacyLink")).click();
+		WebElement link = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Data Privacy']")));
+		helper.pause(500);
+		Assert.assertNotNull(link);
+		driver.findElement(By.id("mainNavigationViewBack")).click();
+		WebElement home = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Register']")));
+		Assert.assertNotNull(home);
+
+}	
 }

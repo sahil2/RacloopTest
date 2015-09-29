@@ -2,18 +2,22 @@ package com.racloop.test.login;
 
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class WrongInputLogin {
 	
 	public static WebDriver driver;
 	public static String baseUrl = "http://localhost:8082";
-
+	HelperClass helper = new HelperClass();
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		driver = new FirefoxDriver();
@@ -26,7 +30,7 @@ public class WrongInputLogin {
 
 	@Before
 	public void setUp() throws Exception {
-		driver.get("http://localhost:8082");
+		driver.get("http://localhost:8082");		
 	}
 
 	@After
@@ -35,11 +39,13 @@ public class WrongInputLogin {
 
 	@Test
 	public void test() {
-		driver.findElement(By.xpath("/html/body/div[1]/div/div[6]/div[3]/div/div[2]/div/form/div[1]/div[2]/div[1]/div[4]/div/div/div/a[1]")).click();
+		driver.findElement(By.id("searchFormSignInLink")).click();
+		helper.pause(100);
 		driver.findElement(By.name("email")).sendKeys("abc@gmail.com");
 		driver.findElement(By.name("password")).sendKeys("hgfhj");
-		driver.findElement(By.xpath("/html/body/div[1]/div/div[6]/div[3]/div/div[2]/div/form[2]/div[1]/div[2]/div[1]/div[2]/span[3]")).click();
+		driver.findElement(By.id("loginFormLoginButton")).click();
+		WebElement messageBox = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Login Error']")));
+		Assert.assertNotNull(messageBox);
 		
 	}
-
 }

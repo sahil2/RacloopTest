@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BeforeLoginLinks {
 	public static WebDriver driver;
 	public static String baseUrl = "http://localhost:8082";
+	HelperClass helper = new HelperClass();
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -30,6 +31,7 @@ public class BeforeLoginLinks {
 	@Before
 	public void setUp() throws Exception {
 		driver.get(baseUrl);
+		helper.pause(1500);
 	}
 
 	@After
@@ -49,11 +51,7 @@ public class BeforeLoginLinks {
 	public void forgetPasswordlink() {
 		driver.findElement(By.id("searchFormSignInLink")).click();
 		WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		helper.pause(500);
 		Assert.assertNotNull(signin);
 		driver.findElement(By.id("loginFormForgetPasswordLink")).click();
 		WebElement forgetpass = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Forgot Password']")));
@@ -68,11 +66,7 @@ public class BeforeLoginLinks {
 	public void verifyMobilelink() {
 		driver.findElement(By.id("searchFormSignInLink")).click();
 		WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		helper.pause(500);
 		Assert.assertNotNull(signin);
 		driver.findElement(By.id("loginFormVerifyMobileLink")).click();
 		WebElement forgetpass = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Verify Mobile']")));
@@ -98,11 +92,7 @@ public class BeforeLoginLinks {
 	public void termslink() {
 		driver.findElement(By.id("searchFormRegisterLink")).click();
 		WebElement login = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Register']")));
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		helper.pause(500);
 		Assert.assertNotNull(login);
 		driver.findElement(By.id("registerFormTermsLink")).click();
 		WebElement link = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Terms of Use']")));
@@ -121,23 +111,15 @@ public class BeforeLoginLinks {
 //	public void privacylink() {
 //		driver.findElement(By.id("searchFormRegisterLink")).click();
 //		WebElement login = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Register']")));
-//		try {
-//			Thread.sleep(500);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
+//		helper.pause(500);
 //		Assert.assertNotNull(login);
 //		driver.findElement(By.id("registerFormPrivacyLink")).click();
 //		WebElement link = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Data Privacy']")));
-//		try {
-//			Thread.sleep(500);
-//		} catch (InterruptedException e) {
-//			e.printStackTrace();
-//		}
+//		helper.pause(500);
 //		Assert.assertNotNull(link);
 //		driver.findElement(By.id("mainNavigationViewBack")).click();
 //		WebElement home = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Register']")));
 //		Assert.assertNotNull(home);
 //
-//}
+//}	
 }

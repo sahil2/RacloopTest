@@ -16,7 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class CabShareHomePage {
 	public static WebDriver driver;
 	public static String baseUrl = "http://localhost:8082";
-
+	HelperClass helper = new HelperClass();
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		driver = new FirefoxDriver();
@@ -55,11 +55,7 @@ public class CabShareHomePage {
 		driver.findElement(By.id("searchFormMainTo")).sendKeys("Chandigarh, India");
 		driver.findElement(By.name("date")).click();
 		WebElement ridesearch = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+		helper.pause(500);
 		Assert.assertNotNull(ridesearch);
 //		driver.findElement(By.name("date")).click();
 //		driver.findElement(By.name("time")).click();;

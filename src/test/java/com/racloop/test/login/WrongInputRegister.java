@@ -39,7 +39,7 @@ public class WrongInputRegister {
 	}
 
 	@Test
-	public void test() {
+	public void wrongInputRegistertest() {
 		driver.findElement(By.id("searchFormRegisterLink")).click();
 		helper.pause(100);
 		driver.findElement(By.name("email")).sendKeys("sahil.in");

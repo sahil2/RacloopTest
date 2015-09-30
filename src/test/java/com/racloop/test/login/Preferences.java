@@ -65,7 +65,8 @@ public class Preferences {
 			e.printStackTrace();
 		}
 		Assert.assertNotNull(click);
-		driver.findElement(By.className("settingNavigationViewPreferences")).click();
+		driver.findElement(By.xpath("//span[contains(text(), 'Preferences')]")).click();
+		//driver.findElement(By.className("settingNavigationViewPreferences")).click();
 		WebElement insert = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Preferences']")));
 		try {
 			Thread.sleep(500);

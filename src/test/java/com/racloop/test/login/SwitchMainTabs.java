@@ -60,7 +60,8 @@ public class SwitchMainTabs {
 		driver.findElement(By.className("mainTabsjourneyNavigationView")).click();
 		driver.findElement(By.className("mainTabsHistory")).click();
 		driver.findElement(By.className("mainTabsSettings")).click();
-		driver.findElement(By.className("settingNavigationViewLogout")).click();
+		driver.findElement(By.xpath("//span[contains(text(), 'Logout')]")).click();
+		//driver.findElement(By.className("settingNavigationViewLogout")).click();
 	   	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
 		Assert.assertNotNull(signin);
 	}

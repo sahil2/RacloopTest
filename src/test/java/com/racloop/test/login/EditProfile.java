@@ -43,6 +43,45 @@ public class EditProfile {
 	@After
 	public void tearDown() throws Exception {
 	}
+	
+	@Test
+	public void emptyName() {
+		driver.findElement(By.id("searchFormSignInLink")).click();
+		helper.pause(500);
+		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
+		driver.findElement(By.name("password")).sendKeys("qwert");
+		driver.findElement(By.id("loginFormLoginButton")).click();
+		helper.pause(500);
+		driver.findElement(By.className("mainTabsSettings")).click();
+		driver.findElement(By.xpath("//span[contains(text(), 'Profile')]")).click();
+		driver.findElement(By.name("fullName")).clear();
+		driver.findElement(By.name("fullName")).sendKeys("");
+		driver.findElement(By.id("editProfileFormButton")).click();
+		helper.pause(1000);
+		WebElement edit = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Settings']")));
+		Assert.assertNotNull(edit);
+		driver.findElement(By.className("mainTabsSettings")).click();
+		WebElement aelement = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(aelement);
+		driver.findElement(By.className("settingNavigationViewLogout")).click();
+		WebElement logout = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Profile']")));
+		try {
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		Assert.assertNotNull(logout);
+    	driver.findElement(By.xpath("//*[.='Sign In']"));
+	   	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
+		Assert.assertNotNull(signin);
+		
+	}
+	
 
 	@Test
 	public void editName() {
@@ -50,12 +89,15 @@ public class EditProfile {
 		helper.pause(500);
 		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("qwert");
-		driver.findElement(By.id("loginFormLoginButton")).click();	
+		driver.findElement(By.id("loginFormLoginButton")).click();
+		helper.pause(500);
 		driver.findElement(By.className("mainTabsSettings")).click();
 		driver.findElement(By.xpath("//span[contains(text(), 'Profile')]")).click();
 		driver.findElement(By.name("fullName")).clear();
 		driver.findElement(By.name("fullName")).sendKeys("Sahil");
-		driver.findElement(By.id("editProfileFormButton")).click();
+		
+		driver.findElement(By.className("editProfileFormButton")).click();
+		
 		WebElement edit = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Settings']")));
 		Assert.assertNotNull(edit);
 				
@@ -81,47 +123,6 @@ public class EditProfile {
 		
 	}
 		
-		//@Test
-		public void editMobile() {
-			driver.findElement(By.id("searchFormSignInLink")).click();
-			WebElement editmobile = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			Assert.assertNotNull(editmobile);
-			driver.findElement(By.name("email")).sendKeys("user@racloop.com");
-			driver.findElement(By.name("password")).clear();
-			driver.findElement(By.name("password")).sendKeys("qwert");
-			driver.findElement(By.id("loginFormLoginButton")).click();
-			WebElement home = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			Assert.assertNotNull(home);
-			driver.findElement(By.className("mainTabsSettings")).click();
-			WebElement aelement = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Search Rides']")));
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			Assert.assertNotNull(aelement);
-			driver.findElement(By.className("settingNavigationViewLogout")).click();
-			WebElement logout = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Profile']")));
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			Assert.assertNotNull(logout);
-	    	driver.findElement(By.xpath("//*[.='Sign In']"));
-		   	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
-			Assert.assertNotNull(signin);
 		
-	}
 
 }

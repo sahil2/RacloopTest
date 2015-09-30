@@ -38,7 +38,7 @@ public class WrongInputLogin {
 	}
 
 	@Test
-	public void test() {
+	public void wrongInputLogintest() {
 		driver.findElement(By.id("searchFormSignInLink")).click();
 		helper.pause(100);
 		driver.findElement(By.name("email")).sendKeys("abc@gmail.com");

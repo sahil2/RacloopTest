@@ -49,14 +49,15 @@ public class CabShareHomePage {
 }
 	@Test
 	public void rideSearch() {
-		driver.findElement(By.id("searchFormMainFrom")).click();
+		//driver.findElement(By.id("searchFormMainFrom")).click();
 		driver.findElement(By.id("searchFormMainFrom")).sendKeys("Delhi, India");
-		helper.pause(500);
-		driver.findElement(By.id("searchFormMainTo")).click();
+		helper.pause(15000);
+		//driver.findElement(By.id("searchFormMainTo")).click();
 		driver.findElement(By.id("searchFormMainTo")).sendKeys("Chandigarh, India");
 		helper.pause(500);
-		driver.findElement(By.name("date")).sendKeys("09/30/2015");
-		helper.pause(10000);
+		//driver.findElement(By.name("date")).click();
+		 driver.findElement(By.xpath("//div[@id='ext-input-21']/div")).click();
+		//helper.pause(10000);
 //		driver.findElement(By.name("date")).click();
 //		driver.findElement(By.name("time")).click();;
 //		driver.findElement(By.name("picker")).click();;

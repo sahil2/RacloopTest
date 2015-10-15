@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class Myrides {
 	public static WebDriver driver;
 	public static String baseUrl = "http://localhost:8082";
+	HelperClass helper = new HelperClass();
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -46,7 +47,7 @@ public class Myrides {
 			e.printStackTrace();
 		}
 	    Assert.assertNotNull(emptypass);
-		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
+		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("qwert");
 		driver.findElement(By.id("loginFormLoginButton")).click();
 		WebElement rides = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='My Rides']")));
@@ -74,10 +75,20 @@ public class Myrides {
 		}
 		Assert.assertNotNull(route);
 		driver.findElement(By.className("searchAgainButton")).click();
+		helper.pause(500);
+		driver.findElement(By.className("detailsButton")).click();
+		driver.findElement(By.id("searchNavigationViewBack")).click();
+		helper.pause(500);
+		driver.findElement(By.className("confirmButton")).click();
+		driver.findElement(By.className("travelBuddiesButton")).click();
+		driver.findElement(By.className("cancelButton")).click();
+		driver.findElement(By.xpath("//span[contains(text(), 'No')]")).click();
+		driver.findElement(By.id("journeyNavigationViewBack")).click();
 		driver.findElement(By.className("mainTabsjourneyNavigationView")).click();
 		WebElement home = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='My Rides']")));
 		Assert.assertNotNull(home);
-	
+		
+		
 		
 		
 	}

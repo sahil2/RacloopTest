@@ -87,7 +87,7 @@ public class History {
 		Assert.assertNotNull(signin);
 		helper.pause(500);
 		driver.findElement(By.className("makeRecurringButton")).click();
-		helper.pause(500);
+		helper.pause(1000);
 		driver.findElement(By.className("cancelrecurringSearchScreen")).click();
 		helper.pause(500);
 		WebElement cancel = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Recurring Rides']")));

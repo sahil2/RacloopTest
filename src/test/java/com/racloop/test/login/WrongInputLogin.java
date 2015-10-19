@@ -18,6 +18,7 @@ public class WrongInputLogin {
 	public static WebDriver driver;
 	public static String baseUrl = "http://localhost:8082";
 	HelperClass helper = new HelperClass();
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		driver = new FirefoxDriver();

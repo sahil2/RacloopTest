@@ -37,7 +37,7 @@ public class Logout {
 	}
 
 	@Test
-	public void Loginsuccess() {
+	public void Logoutsuccess() {
 	    driver.findElement(By.id("searchFormSignInLink")).click();
 	    WebElement loginsuccess = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
 	    try {
@@ -46,7 +46,7 @@ public class Logout {
 			e.printStackTrace();
 		}
 	    Assert.assertNotNull(loginsuccess);
-		driver.findElement(By.name("email")).sendKeys("admin@racloop.com");
+		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("qwert");
 		driver.findElement(By.id("loginFormLoginButton")).click();
 		WebElement login = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Map']")));

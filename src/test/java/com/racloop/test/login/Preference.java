@@ -13,7 +13,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class EmergencyContact {
+public class Preference {
 	public static WebDriver driver;
 	public static String baseUrl = "http://localhost:8082";
 	HelperClass helper = new HelperClass();
@@ -45,62 +45,31 @@ public class EmergencyContact {
 	}
 
 	@Test
-	public void emergencyThirdLogin() {
+	public void InvalidEmergencycontacts() {
 		driver.findElement(By.id("searchFormSignInLink")).click();
 		helper.pause(500);
 		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
 		driver.findElement(By.name("password")).sendKeys("qwert");
 		driver.findElement(By.id("loginFormLoginButton")).click();
 		helper.pause(500);
-		WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Emergency Contacts']")));
-		Assert.assertNotNull(signin);
+		driver.findElement(By.className("mainTabsSettings")).click();
+		driver.findElement(By.xpath("//span[contains(text(), 'Preferences')]")).click();
+		helper.pause(1000);
 		driver.findElement(By.name("contactOne")).clear();
-		driver.findElement(By.name("contactOne")).sendKeys("9521235648");
+		driver.findElement(By.name("contactOne")).sendKeys("95213");
 		driver.findElement(By.name("contactTwo")).clear();
-		driver.findElement(By.name("contactTwo")).sendKeys("9521235658");
-		WebElement check = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Emergency Contacts']")));
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		Assert.assertNotNull(check);
-		driver.findElement(By.id("emergencyContactSaveButton")).click();
-		WebElement save = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Emergency Contacts']")));
-		Assert.assertNotNull(save);
+		driver.findElement(By.name("contactTwo")).sendKeys("95213");
+		driver.findElement(By.id("preferencesFormSaveButton")).click();
 		driver.findElement(By.className("mainTabsSettings")).click();
 		helper.pause(1000);
 		driver.findElement(By.xpath("//span[contains(text(), 'Logout')]")).click();
     	WebElement logout = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Settings']")));
 		Assert.assertNotNull(logout);
-	   	
 	}
 	
-	@Test
-	public void emergencySecondLogin() {
-			driver.findElement(By.id("searchFormSignInLink")).click();
-			helper.pause(500);
-			driver.findElement(By.name("email")).sendKeys("user@racloop.com");
-			driver.findElement(By.name("password")).sendKeys("qwert");
-			driver.findElement(By.id("loginFormLoginButton")).click();
-			helper.pause(500);
-			driver.findElement(By.className("mainTabsSettings")).click();
-			helper.pause(1000);
-			driver.findElement(By.xpath("//span[contains(text(), 'Logout')]")).click();
-			WebElement logout = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Profile']")));
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-			Assert.assertNotNull(logout);
-	    	driver.findElement(By.xpath("//*[.='Sign In']"));
-		   	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
-			Assert.assertNotNull(signin);
-	}
 	
 	@Test
-	public void emergencyFirstLogin() {
+	public void ValidEmergencycontacts() {
 		driver.findElement(By.id("searchFormSignInLink")).click();
 		helper.pause(500);
 		driver.findElement(By.name("email")).sendKeys("user@racloop.com");
@@ -109,18 +78,20 @@ public class EmergencyContact {
 		helper.pause(500);
 		driver.findElement(By.className("mainTabsSettings")).click();
 		helper.pause(1000);
+		driver.findElement(By.xpath("//span[contains(text(), 'Preferences')]")).click();
+		helper.pause(1000);
+		driver.findElement(By.name("contactOne")).clear();
+		driver.findElement(By.name("contactOne")).sendKeys("9542362584");
+		driver.findElement(By.name("contactTwo")).clear();
+		driver.findElement(By.name("contactTwo")).sendKeys("9521356425");
+		driver.findElement(By.id("preferencesFormSaveButton")).click();
+		driver.findElement(By.className("mainTabsSettings")).click();
+		helper.pause(1000);
 		driver.findElement(By.xpath("//span[contains(text(), 'Logout')]")).click();
-		WebElement logout = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Profile']")));
-		try {
-			Thread.sleep(500);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+    	WebElement logout = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Settings']")));
 		Assert.assertNotNull(logout);
-    	driver.findElement(By.xpath("//*[.='Sign In']"));
-	   	WebElement signin = (new WebDriverWait(driver, 10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[.='Sign In']")));
-		Assert.assertNotNull(signin);
-	   	
 	}
+	
+	
 
 }
